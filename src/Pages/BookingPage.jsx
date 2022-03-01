@@ -39,6 +39,7 @@ export default function BookingPage() {
   const [isLoading ,setLoading] = useState(true);
   const guest = useSelector((state) => state.guests);
   const night = useSelector((state) => state.night);
+  const authLogin = useSelector((state) => state.authlogin);
  const fetchData = () => {
    return axios.get(`https://airbnb-json-server.herokuapp.com/Available/${id}`)
 }
@@ -89,7 +90,7 @@ const handleFetch = async () => {
           alt=""
         /></Link>
       </div> */}
-    <div style={{display: "flex",}}>
+    <div className={style.page_detalis}>
       <div className={style.mainBook}>
         <div className={style.return}>
           <h1 style={{ fontWeight: "600" }} onClick={prevPage}>
@@ -197,14 +198,14 @@ const handleFetch = async () => {
       </Dialog>
       <hr/>
       <Cancellation
-      date='22 jan'
+      date='04 March'
       />
         </div>
         {/* <Button variant="contained" style={{backgroundColor: "#D80666",textTransform: "none", padding: "10px 30px"}}>Request to book</Button> */}
         <PaymentSucess/>
       
       </div>
-           {isLoading ? <h2>..loading</h2> : (
+      {isLoading ? <h2>..loading</h2> : (
               <PriceDetails
               image={hotel.Image1}
               hotelName={hotel["Hotel name"]}
@@ -213,7 +214,6 @@ const handleFetch = async () => {
               day={night}
               
               taxes={hotel.Tax}
-              
               />
            )}
 
